@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import Routes from './routes/routes'
 const app = express();
+require('dotenv').config();
 
 app.use(bodyParser.json());
 

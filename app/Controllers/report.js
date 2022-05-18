@@ -10,7 +10,7 @@ export default class AccountController extends Controller {
     printOutstanding (request) {
       try{  
         var startTime = performance.now()    
-          const addUser = this.service.printReport("OutstandingReport.html")
+          const addUser = this.service.printReport("OutstandingReport")
           var endTime = performance.now()
   console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)   
 
@@ -26,7 +26,7 @@ export default class AccountController extends Controller {
     }
     printFeeledger (request) {
           try{     
-          const addUser =  this.service.printReport("FeeLedgerReport.html")
+          const addUser =  this.service.printReport("FeeLedgerReport")
           addUser.then(res => {
               this.sendResponse(res);
             })
@@ -39,7 +39,7 @@ export default class AccountController extends Controller {
     }
     printDailybalance (request) {
       try{     
-        const addUser =  this.service.printReport("Dailybalance.html")
+        const addUser =  this.service.printReport("Dailybalance")
         addUser.then(res => {
             this.sendResponse(res);
           })
