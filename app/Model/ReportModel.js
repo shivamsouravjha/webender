@@ -6,7 +6,7 @@ const schema=  mongoose.Schema;
 const reportSchema = new schema({
     started: {type :Boolean },
     creation: {type :Boolean },
-    uploading : {type :Boolean},
+    upload : {type :Boolean},
     completed   : {type :Boolean },
     startedAt: {type :Date},
     completedAt: {type:Date},

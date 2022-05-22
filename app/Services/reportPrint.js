@@ -23,12 +23,12 @@ export default class AccountService{
             api_secret:process.env.cloudinary_api_secret
           })
           groupModel['uploadingStartAt'] =this.bringTime()  
-          groupModel['uploading'] = true
           await this.repository.updateReport(groupModel)
           let  focc = await clouud.uploader.upload(args,{
                       folder: `memes/posts`,
                       use_filename: true
           })
+          groupModel['upload'] = true
           groupModel['uploadingCompletedAt'] = this.bringTime()  
           groupModel['link'] = focc.secure_url 
           return focc.secure_url
@@ -45,8 +45,9 @@ export default class AccountService{
     async printReport(args) {
         try {  
             const groupModel = new GroupModel({startedAt:this.bringTime(),started:true,creation:false,uploading:false,completed:false});
-            const reso = await this.repository.createReport(groupModel)
+            await this.repository.createReport(groupModel)
             groupModel['creationStartAt'] = this.bringTime()
+            groupModel['creation'] = this.bringTime()
             var html = fs.readFileSync(`./app/Resource/${args.file}.html`, 'utf8');
             pdf.create(html, options).toStream(async (err, pdfStream) => {
               if (err) {   
