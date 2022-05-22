@@ -7,46 +7,34 @@ export default class AccountController extends Controller {
       super(response);
       this.service = new ReportService();
     }
-    printOutstanding (request) {
+    async printOutstanding (request) {
       try{  
-        var startTime = performance.now()    
-          const addUser = this.service.printReport("OutstandingReport")
-          var endTime = performance.now()
-  console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)   
-
-          addUser.then(res => {
-              this.sendResponse(res);
-            })
-            .catch (error => {
-              this.handleException(error);
-            }) 
+          const { format, orientation} = request.body;
+          var args = {"file":"OutstandingReport","format":format,"orientation":orientation}
+          const addUser =  await this.service.printReport(args)
+          this.sendResponse(addUser);   
       } catch (error) {
           this.handleException(error)
       }
     }
-    printFeeledger (request) {
+    async printFeeledger (request) {
           try{     
-          const addUser =  this.service.printReport("FeeLedgerReport")
-          addUser.then(res => {
-              this.sendResponse(res);
-            })
-            .catch (error => {
-              this.handleException(error);
-            }) 
+            const { format, orientation} = request.body;
+            var args = {"file":"FeeLedgerReport","format":format,"orientation":orientation}
+            const addUser =  await this.service.printReport(args)
+            this.sendResponse(addUser);     
       } catch (error) {
           this.handleException(error)
       }
     }
-    printDailybalance (request) {
-      try{     
-        const addUser =  this.service.printReport("Dailybalance")
-        addUser.then(res => {
-            this.sendResponse(res);
-          })
-          .catch (error => {
-            this.handleException(error);
-          }) 
+     async printDailybalance (request) {
+      try{
+        const { format, orientation} = request.body;
+        var args = {"file":"Dailybalance","format":format,"orientation":orientation}
+        const addUser = await this.service.printReport(args)
+        this.sendResponse(addUser); 
       } catch (error) {
+        console.log("sdds")
         this.handleException(error)
       }
     }

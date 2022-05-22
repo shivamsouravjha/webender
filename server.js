@@ -1,23 +1,16 @@
+import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
-import Routes from './routes/routes'
+import Routes from './routes/reportAPI'
+import HeaderMiddleware from './middlewares/headerMiddleware'
 const app = express();
 require('dotenv').config();
 
+app.use(HeaderMiddleware)
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-  next();
-}); 
 
-
-app.use('/api/report/', Routes.ReportApiRouter); 
+app.use('/api/', Routes); 
 
 
 app.use((req, res, next) => {
@@ -33,7 +26,18 @@ app.use((error, req, res, next) => {
     res.status(error.code || 500)
     res.json({message: error.message || 'An unknown error occurred!', success: error.success||false});
 });
-  
-app.listen(process.env.PORT || 5001);
-
+    
+mongoose
+    .connect(
+      `mongodb://${process.env.name}:${process.env.password}@cluster0-shard-00-00.dm1xw.mongodb.net:27017,cluster0-shard-00-01.dm1xw.mongodb.net:27017,cluster0-shard-00-02.dm1xw.mongodb.net:27017/${process.env.db}?ssl=true&replicaSet=atlas-x6eag6-shard-0&authSource=admin&retryWrites=true&w=majority`,
+      { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true }
+      
+    )
+    .then(() => {
+      console.log('listening at port',process.env.PORT || 5001 )
+      app.listen(process.env.PORT || 5001);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   

@@ -1,86 +1,80 @@
 const pdf = require('html-pdf');
 var fs = require('fs');
-var options = { format: 'Letter' };
+var options = {
+  format: "A4",
+  orientation: "potrait",
+};
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
 var clouud= require('cloudinary').v2;
-const { pipeline } = require('stream');
-const { createWriteStream } = require('fs');
-const { performance } = require('perf_hooks');
+var dateTime = require('node-datetime');
+import GroupModel from "../Model/ReportModel";
+import Database from "../Database-interaction/ReportRepositroy";
 
 export default class AccountService{
-        async fileremover(args){
-          try{
-            await unlinkAsync(args)
-          }catch (error) {
-            console.log(error)
-            throw error;
-        }
-          return 
-      }
-      async fileuploader(args){
-
+      constructor() {
+        this.repository = new Database();
+    }
+    async fileuploader(args,groupModel){
         try{
           clouud.config({
             cloud_name:process.env.cloudinary_cloud_name,
             api_key:process.env.cloudinary_api_key,
             api_secret:process.env.cloudinary_api_secret
           })
-  
-          let  focc = await clouud.uploader.upload(args, 
-              {
+          groupModel['uploadingStartAt'] =this.bringTime()  
+          groupModel['uploading'] = true
+          await this.repository.updateReport(groupModel)
+          let  focc = await clouud.uploader.upload(args,{
                       folder: `memes/posts`,
                       use_filename: true
-                    })
-                    console.log("focc")
-  
-          console.log(focc.secure_url)
+          })
+          groupModel['uploadingCompletedAt'] = this.bringTime()  
+          groupModel['link'] = focc.secure_url 
           return focc.secure_url
         }catch (error) {
             console.log(error)
             throw error;
         }
-       
-      }
+    }
+    bringTime(){
+        var dt = dateTime.create();
+        var started = dt.format('Y-m-d H:M:S');
+        return started
+    }
     async printReport(args) {
-        try {
-          let link
-
-            var html = fs.readFileSync(`./app/Services/${args}.html`, 'utf8');
-            pdf.create(html, options).toStream((err, pdfStream) => {
+        try {  
+            const groupModel = new GroupModel({startedAt:this.bringTime(),started:true,creation:false,uploading:false,completed:false});
+            const reso = await this.repository.createReport(groupModel)
+            groupModel['creationStartAt'] = this.bringTime()
+            var html = fs.readFileSync(`./app/Resource/${args.file}.html`, 'utf8');
+            pdf.create(html, options).toStream(async (err, pdfStream) => {
               if (err) {   
                 console.log(err)
               } else {
-
-                pipeline(pdfStream, createWriteStream(`./Print/${args}.pdf`), (err) => {
-                  console.log(err);
-                });
+                groupModel['creation'] = true
+                groupModel['creationCompletedAt'] = this.bringTime()
+                await this.repository.updateReport(groupModel)
+                const path = `./Print/${args.file}.pdf`;
+                const filePath = fs.createWriteStream(path);
+                pdfStream.pipe(filePath);               
                 pdfStream.on('close',async () => {
                   try{
-                    var startTime = performance.now()    
-                    link =  await this.fileuploader(`./Print/${args}.pdf`) 
-                    var endTime = performance.now()
-                    console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)   
+                    filePath.close();
+                    let link =  await this.fileuploader(`./Print/${args.file}.pdf`,groupModel) 
+                    await unlinkAsync(`./Print/${args.file}.pdf`)
+                    groupModel['completedAt'] = this.bringTime()
+                    groupModel['completed'] =true
+                    await this.repository.updateReport(groupModel)
                     return link
                   }catch (error) {
                     console.log(error)
-                }
-                  
-                })
-                pdfStream.on('close', async () => {
-                  try{
-                    await this.fileremover(`./Print/${args}.pdf`)
-                  }catch (error) {
-                    console.log(error)
-                }
-                  
-                })
-                return
+                }        
+               })              
               }
             })
-            return {"success":true,"link":link}
+            return {"success":true}
         } catch (error) {
-            console.log(error)
             throw error;
         }
     }
