@@ -10,6 +10,7 @@ var clouud= require('cloudinary').v2;
 var dateTime = require('node-datetime');
 import GroupModel from "../Model/ReportModel";
 import Database from "../Database-interaction/ReportRepositroy";
+import * as STATUS from "../Constants/StatusEnum";
 
 export default class AccountService{
       constructor() {
@@ -28,12 +29,13 @@ export default class AccountService{
                       folder: `memes/posts`,
                       use_filename: true
           })
-          groupModel['upload'] = true
+          groupModel['status'] = STATUS.STATUS.UPLOADED
           groupModel['uploadingCompletedAt'] = this.bringTime()  
           groupModel['link'] = focc.secure_url 
+          await this.repository.updateReport(groupModel)
           return focc.secure_url
         }catch (error) {
-            console.log(error)
+          groupModel['status'] = STATUS.STATUS.FAILED_AT_UPLOADED
             throw error;
         }
     }
@@ -44,16 +46,15 @@ export default class AccountService{
     }
     async printReport(args) {
         try {  
-            const groupModel = new GroupModel({startedAt:this.bringTime(),started:true,creation:false,uploading:false,completed:false});
+            const groupModel = new GroupModel({startedAt:this.bringTime(),status:STATUS.STATUS.STARTED});
             await this.repository.createReport(groupModel)
             groupModel['creationStartAt'] = this.bringTime()
-            groupModel['creation'] = this.bringTime()
             var html = fs.readFileSync(`./app/Resource/${args.file}.html`, 'utf8');
             pdf.create(html, options).toStream(async (err, pdfStream) => {
               if (err) {   
                 console.log(err)
               } else {
-                groupModel['creation'] = true
+                groupModel['status'] = STATUS.STATUS.CREATED
                 groupModel['creationCompletedAt'] = this.bringTime()
                 await this.repository.updateReport(groupModel)
                 const path = `./Print/${args.file}.pdf`;
@@ -65,9 +66,8 @@ export default class AccountService{
                     let link =  await this.fileuploader(`./Print/${args.file}.pdf`,groupModel) 
                     await unlinkAsync(`./Print/${args.file}.pdf`)
                     groupModel['completedAt'] = this.bringTime()
-                    groupModel['completed'] =true
+                    groupModel['status'] = STATUS.STATUS.COMPLETED
                     await this.repository.updateReport(groupModel)
-                    return link
                   }catch (error) {
                     console.log(error)
                 }        

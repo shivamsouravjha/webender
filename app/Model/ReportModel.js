@@ -4,10 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const schema=  mongoose.Schema;
 
 const reportSchema = new schema({
-    started: {type :Boolean },
-    creation: {type :Boolean },
-    upload : {type :Boolean},
-    completed   : {type :Boolean },
+    status: {type :String },
     startedAt: {type :Date},
     completedAt: {type:Date},
     creationStartAt: {type :Date},
