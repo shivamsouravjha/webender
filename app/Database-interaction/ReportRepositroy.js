@@ -21,4 +21,12 @@ export default class SourceRepository {
             throw error
         }
     }
+    async fetchReport(reportID) {
+        try{
+            let resp = await ReportModel.findById(reportID); 
+            return resp
+        } catch (error) {
+            throw error
+        }
+    }
 }

@@ -3,27 +3,27 @@ import SourceController from '../app/Controllers/report';
 
 const ReportApiRouter = express.Router();
 
-ReportApiRouter.get('/report/outstanding', (request, response) => {
+ReportApiRouter.get('/outstanding', (request, response) => {
   const reportController = new SourceController(response);
   reportController.printOutstanding(request);
 });
 
-ReportApiRouter.get('/report/feeledger', (request, response) => {
+ReportApiRouter.get('/feeledger', (request, response) => {
   const reportController = new SourceController(response);
   reportController.printFeeledger(request);
 });
 
-ReportApiRouter.get('/report/dailybalance', (request, response) => {
+ReportApiRouter.get('/dailybalance', (request, response) => {
   const reportController = new SourceController(response);
   reportController.printDailybalance(request);
 });
 
-ReportApiRouter.get('/report/mail', (request, response) => {
+ReportApiRouter.get('/mail', (request, response) => {
   const reportController = new SourceController(response);
   reportController.printMail(request);
 });
 
-ReportApiRouter.get('/report/feecollection', (request, response) => {
+ReportApiRouter.get('/feecollection', (request, response) => {
   const reportController = new SourceController(response);
   reportController.printFeeCollection(request);
 });

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
-import Routes from './routes/reportAPI'
+import Routes from './routes/routes'
 import HeaderMiddleware from './middlewares/headerMiddleware'
 const app = express();
 require('dotenv').config();
@@ -10,7 +10,8 @@ app.use(HeaderMiddleware)
 app.use(bodyParser.json());
 
 
-app.use('/api/', Routes); 
+app.use('/api/report', Routes.ReportApiRouter); 
+app.use('/api/upload', Routes.StatusApiRouter); 
 
 
 app.use((req, res, next) => {
