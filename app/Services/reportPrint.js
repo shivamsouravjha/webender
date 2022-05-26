@@ -66,7 +66,7 @@ export default class AccountService {
           pdfStream.on('close', async () => {
             try {
               filePath.close();
-              let link = await this.fileuploader(`./Print/${options.file}.pdf`, groupModel)
+              await this.fileuploader(`./Print/${options.file}.pdf`, groupModel)
               await unlinkAsync(`./Print/${options.file}.pdf`)
               groupModel['completedAt'] = this.bringTime()
               groupModel['status'] = STATUS.STATUS.COMPLETED
@@ -77,7 +77,7 @@ export default class AccountService {
           })
         }
       })
-      return { "success": true }
+      return { "success": true,"tracking_id":groupModel._id }
     } catch (error) {
       throw error;
     }

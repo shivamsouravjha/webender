@@ -36,9 +36,18 @@ export default class AccountController extends Controller {
 
   async printFeeledger(request) {
     try {
-      const { format, orientation } = request.body;
-      var args = { "file": "FeeLedgerReport", "format": format, "orientation": orientation }
-      const addUser = await this.service.printReport(args)
+      const settings = STATUS.ReportSettings.dailybalance;
+      const { data ,school,address,date,months} = request.body;
+      const htmlData = await readFileAsync('./app/Resource/FeeLedgerReport.ejs', { encoding: 'utf8' });
+
+      let html = await ejs.render(htmlData, {data:data,school:school,address:address,date:date,months:months},{async:true});
+      var printOptions = {
+        "file": "FeeLedgerReport",
+        "format": settings.format,
+        "orientation": settings.orientation
+      }
+
+      const addUser = await this.service.printReport(html, printOptions)
       this.sendResponse(addUser);
     } catch (error) {
       this.handleException(error)
