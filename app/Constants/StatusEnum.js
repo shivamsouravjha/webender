@@ -8,3 +8,10 @@ export const STATUS = {
     FAILED_AT_UPLOADED: 'FAILED_AT_UPLOADED',
     FAILED_AT_COMPLETED: 'FAILED_AT_COMPLETED',
   }
+
+export const ReportSettings = {
+    dailybalance: {
+      orientation: 'potrait',
+      format: 'A4',
+    }
+  }

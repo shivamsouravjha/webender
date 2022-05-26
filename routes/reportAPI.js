@@ -18,4 +18,14 @@ ReportApiRouter.get('/report/dailybalance', (request, response) => {
   reportController.printDailybalance(request);
 });
 
+ReportApiRouter.get('/report/mail', (request, response) => {
+  const reportController = new SourceController(response);
+  reportController.printMail(request);
+});
+
+ReportApiRouter.get('/report/feecollection', (request, response) => {
+  const reportController = new SourceController(response);
+  reportController.printFeeCollection(request);
+});
+
 export default ReportApiRouter;

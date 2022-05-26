@@ -104,13 +104,10 @@
 																								<td align="left"
 																									style="font-family:'Poppins', sans-serif, Verdana; font-size:24px; color:#000000;font-weight:bold;padding:5px;"
 																									valign="top">
-																									Toppers Academy Coaching</br>
+																									<%= school %></br>
 																									<span
 																										style="font-family:'Poppins', Verdana, Arial; font-size:12px; color:#121212; font-weight:normal;">
-																										137, 6th Cross Road,
-                                                                                                         Vidhana Soudha Layout,
-                                                                                                          Nandini Layout,
-                                                                                                          Bengaluru, 560058, Karnataka, India
+																										<%= address %>
                                                                                                     </span>
 																								</td>
 																							</tr>
@@ -175,7 +172,7 @@
 																							<tr>
 																								<td align="left"
 																									style="font-family:'Poppins', Verdana, Arial;font-size:16px; font-weight:bold; color:#242322;">
-																									Outstanding Fee Report
+																									Fee Collection Report
 																								</td>
 																							</tr>
 																							<tr>
@@ -213,7 +210,7 @@
 																								<td align="right"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:16px; font-weight:normal; color:#242322;">
-																									March 2021</td>
+																									<%= date %></td>
 																							</tr>
 																							<tr>
 																								<td height="5"
@@ -260,7 +257,97 @@
 												<td align="center" valign="top">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td width="100" align="left" valign="top" class="two-left">
+															<td width="150" align="left" valign="top" class="two-left">
+																<table width="100%" border="0" align="left"
+																	cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td align="left" valign="top">
+																			<table width="130" border="0" align="left"
+																				cellpadding="0" cellspacing="0">
+																				<tr>
+																					<td width="130" align="left"
+																						valign="top">
+																						<table width="100%" border="0"
+																							align="left" cellpadding="0"
+																							cellspacing="0">
+																							<tr>
+																								<td align="left"
+																									valign="top"
+																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
+																									Date t. & Time</td>
+																							</tr>
+																							<% for(var i = 0; i < data.length; i++) { %>
+																							<tr>
+																								<td height="5"
+																									align="left"
+																									valign="top"
+																									style="font-size:5px; line-height:5px;">
+																									&nbsp;</td>
+																							</tr>
+																							<tr>
+																								<td align="left"
+																									valign="top"
+																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
+																									<%= data[i].time %></td>
+																							</tr>
+																							<% } %>
+																						</table>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="left" valign="top">&nbsp;</td>
+																	</tr>
+																</table>
+															</td>
+                                                            <td width="150" align="left" valign="top" class="two-left">
+																<table width="100%" border="0" align="left"
+																	cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td align="left" valign="top">
+																			<table width="130" border="0" align="left"
+																				cellpadding="0" cellspacing="0">
+																				<tr>
+																					<td width="130" align="left"
+																						valign="top">
+																						<table width="100%" border="0"
+																							align="left" cellpadding="0"
+																							cellspacing="0">
+																							<tr>
+																								<td align="left"
+																									valign="top"
+																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
+																									Student Name</td>
+																							</tr>
+																							<% for(var i = 0; i < data.length; i++) { %> 
+																							<tr>
+																								<td height="5"
+																									align="left"
+																									valign="top"
+																									style="font-size:5px; line-height:5px;">
+																									&nbsp;</td>
+																							</tr>
+																							<tr>
+																								<td align="rleft"
+																									valign="top"
+																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
+																									<%= data[i].name %></td>
+																							</tr>
+																							<% } %>
+																						</table>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="left" valign="top">&nbsp;</td>
+																	</tr>
+																</table>
+															</td>
+                                                            <td width="100" align="left" valign="top" class="two-left">
 																<table width="100%" border="0" align="left"
 																	cellpadding="0" cellspacing="0">
 																	<tr>
@@ -268,7 +355,7 @@
 																			<table width="100" border="0" align="left"
 																				cellpadding="0" cellspacing="0">
 																				<tr>
-																					<td width="100" align="left"
+																					<td width="70" align="left"
 																						valign="top">
 																						<table width="100%" border="0"
 																							align="left" cellpadding="0"
@@ -277,86 +364,23 @@
 																								<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
-																									Date</td>
+																									Amount</td>
 																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									27 Mar 21</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																								    28 Mar 21</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									29 Mar 21</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									30 Mar 21</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									31 Mar 21</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="rleft"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									01 Apr 21</td>
-																							</tr>
+																							<% for(var i = 0; i < data.length; i++) { %> 
+																								<tr>
+																									<td height="5"
+																										align="left"
+																										valign="top"
+																										style="font-size:5px; line-height:5px;">
+																										&nbsp;</td>
+																								</tr>
+																								<tr>
+																									<td align="left"
+																										valign="top"
+																										style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
+																										<%= data[i].amount %></td>
+																								</tr>
+																							<% } %>
 																						</table>
 																					</td>
 																				</tr>
@@ -373,10 +397,10 @@
 																	cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td align="left" valign="top">
-																			<table width="122" border="0" align="left"
+																			<table width="130" border="0" align="left"
 																				cellpadding="0" cellspacing="0">
 																				<tr>
-																					<td width="122" align="left"
+																					<td width="130" align="left"
 																						valign="top">
 																						<table width="100%" border="0"
 																							align="left" cellpadding="0"
@@ -385,86 +409,23 @@
 																								<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
-																									Name</td>
+																									Collected By</td>
 																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									Siddharth Singh</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
+																							<% for(var i = 0; i < data.length; i++) { %> 
+																								<tr>
+																									<td height="5"
+																										align="left"
+																										valign="top"
+																										style="font-size:5px; line-height:5px;">
+																										&nbsp;</td>
+																								</tr>
+																								<tr>
+																									<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																								    Siddharth Singh</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									Siddharth Singh</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									Siddharth Singh</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									Siddharth Singh</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="rleft"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									Siddharth Singh</td>
-																							</tr>
+																										<%= data[i].collectedby %></td>
+																								</tr>
+																							<% } %>
 																						</table>
 																					</td>
 																				</tr>
@@ -476,15 +437,15 @@
 																	</tr>
 																</table>
 															</td>
-                                                            <td width="150" align="left" valign="top" class="two-left">
+                                                            <td width="100" align="left" valign="top" class="two-left">
 																<table width="100%" border="0" align="left"
 																	cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td align="left" valign="top">
-																			<table width="150" border="0" align="left"
+																			<table width="100" border="0" align="left"
 																				cellpadding="0" cellspacing="0">
 																				<tr>
-																					<td width="150" align="left"
+																					<td width="70" align="left"
 																						valign="top">
 																						<table width="100%" border="0"
 																							align="left" cellpadding="0"
@@ -493,8 +454,9 @@
 																								<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
-																									Actual Collected</td>
+																									SMS Sent</td>
 																							</tr>
+																							<% for(var i = 0; i < data.length; i++) { %> 
 																							<tr>
 																								<td height="5"
 																									align="left"
@@ -506,73 +468,9 @@
 																								<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 16,150</td>
+																									<%= data[i].status %></td>
 																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																								    &#x20B9; 16,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 16,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 16,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 16,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="rleft"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 16,150</td>
-																							</tr>
+																							<% } %>
 																						</table>
 																					</td>
 																				</tr>
@@ -584,129 +482,16 @@
 																	</tr>
 																</table>
 															</td>
-															<td width="150" align="left" valign="top" class="two-left">
-																<table width="100%" border="0" align="left"
+                                                            
+                                                            <td width="150" align="lefts" valign="top" class="two-left">
+																<table width="100%" border="0" align="right"
 																	cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td align="left" valign="top">
-																			<table width="150" border="0" align="left"
+																			<table width="130" border="0" align="left"
 																				cellpadding="0" cellspacing="0">
 																				<tr>
-																					<td width="150" align="left"
-																						valign="top">
-																						<table width="100%" border="0"
-																							align="left" cellpadding="0"
-																							cellspacing="0">
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:14px; font-weight:bold; color:#242322;">
-																									To be Collected</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align=leftt"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									&#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-                                                                                                    &#x20B9; 36,150</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:16px; font-weight:bold; color:#242322;">
-																								</td>
-																							</tr>
-																						</table>
-																					</td>
-																				</tr>
-																			</table>
-																		</td>
-																	</tr>
-																	<tr>
-																		<td align="left" valign="top">&nbsp;</td>
-																	</tr>
-																</table>
-															</td>
-                                                            <td width="150" align="left" valign="top" class="two-left">
-																<table width="100%" border="0" align="left"
-																	cellpadding="0" cellspacing="0">
-																	<tr>
-																		<td align="left" valign="top">
-																			<table width="122" border="0" align="left"
-																				cellpadding="0" cellspacing="0">
-																				<tr>
-																					<td width="122" align="left"
+																					<td width="13016align="left"
 																						valign="top">
 																						<table width="100%" border="0"
 																							align="left" cellpadding="0"
@@ -718,6 +503,7 @@
 																									Contact
                                                                                                 </td>
 																							</tr>
+																							<% for(var i = 0; i < data.length; i++) { %> 
 																							<tr>
 																								<td height="5"
 																									align="left"
@@ -729,79 +515,9 @@
 																								<td align="left"
 																									valign="top"
 																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									8429340484</td>
+																									<%= data[i].number %> </td>
 																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									8429340484</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									8429340484</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									8429340484</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-																									8429340484</td>
-																							</tr>
-																							<tr>
-																								<td height="5"
-																									align="left"
-																									valign="top"
-																									style="font-size:5px; line-height:5px;">
-																									&nbsp;</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:12px; font-weight:normal; color:#666; line-height:24px;">
-                                                                                                    8429340484</td>
-																							</tr>
-																							<tr>
-																								<td align="left"
-																									valign="top"
-																									style="font-family:'Poppins', Verdana, Arial; font-size:16px; font-weight:bold; color:#242322;">
-																								</td>
-																							</tr>
+																							<% } %>
 																						</table>
 																					</td>
 																				</tr>
@@ -892,7 +608,7 @@
 																	cellpadding="0" cellspacing="0">
 																	<tr>
 																		<td align="left" valign="top">
-																			<table width="280" border="0" align="left"
+																			<table width="180" border="0" align="left"
 																				cellpadding="0" cellspacing="0">
 																				<tr>
 																					<td width="200" align="left"
@@ -947,7 +663,7 @@
 							<table width="800" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
 								<tr>
 									<td align="center" valign="top" style="background:#FFF;">
-										<table width="750" border="0" cellspacing="0" cellpadding="0"
+										<table width="700" border="0" cellspacing="0" cellpadding="0"
 											class="two-left-inner">
 											<tr>
 												<td height="20" align="center" valign="top">&nbsp;</td>

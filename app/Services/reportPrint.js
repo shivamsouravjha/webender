@@ -39,11 +39,15 @@ export default class AccountService {
       throw error;
     }
   }
+
+  
   bringTime() {
     var dt = dateTime.create();
     var started = dt.format('Y-m-d H:M:S'); // YYYY-MM-DDTHH:MM:SS epoc time
     return started
   }
+
+
   async printReport(html, options) {
     try {
       const groupModel = new GroupModel({ startedAt: this.bringTime(), status: STATUS.STATUS.STARTED });
