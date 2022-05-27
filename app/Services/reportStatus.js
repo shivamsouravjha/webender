@@ -8,10 +8,7 @@ export default class AccountService {
   async fetchStatus(args) {
     try {
       const status = await this.repository.fetchReport(args)
-      if (status.status == "COMPLETED" ){
-        return {link:status.link,status:status.status}
-      }
-      return {status:status.status}
+      return {status:status}
     } catch (error) {
       throw error;
     }

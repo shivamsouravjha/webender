@@ -24,8 +24,6 @@ export default class AccountController extends Controller {
         "format": settings.format,
         "orientation": settings.orientation
       }
-      //fetch html file text
-      console.log(html[0])
 
       const addUser = await this.service.printReport(html, printOptions)
       this.sendResponse(addUser);

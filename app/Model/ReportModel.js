@@ -5,6 +5,7 @@ const schema=  mongoose.Schema;
 
 const reportSchema = new schema({
     status: {type :String },
+    errorstage: {type :String },
     startedAt: {type :Date},
     completedAt: {type:Date},
     creationStartAt: {type :Date},

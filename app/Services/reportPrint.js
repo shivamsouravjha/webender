@@ -35,7 +35,9 @@ export default class AccountService {
       await this.repository.updateReport(groupModel)
       return focc.secure_url
     } catch (error) {
-      groupModel['status'] = STATUS.STATUS.FAILED_AT_UPLOADED
+      if (!groupModel['errorstage']){
+        groupModel['errorstage'] = STATUS.STATUS.FAILED_AT_UPLOADED
+      }
       throw error;
     }
   }
@@ -49,8 +51,8 @@ export default class AccountService {
 
 
   async printReport(html, options) {
+    const groupModel = new GroupModel({ startedAt: this.bringTime(), status: STATUS.STATUS.STARTED });
     try {
-      const groupModel = new GroupModel({ startedAt: this.bringTime(), status: STATUS.STATUS.STARTED });
       await this.repository.createReport(groupModel)
       groupModel['creationStartAt'] = this.bringTime()
       pdf.create(html, options).toStream(async (err, pdfStream) => {
@@ -72,6 +74,9 @@ export default class AccountService {
               groupModel['status'] = STATUS.STATUS.COMPLETED
               await this.repository.updateReport(groupModel)
             } catch (error) {
+              if (!groupModel['errorstage']){
+                groupModel['errorstage'] = STATUS.STATUS.FAILED_AT_COMPLETED
+              }
               console.log(error)
             }
           })
@@ -79,6 +84,11 @@ export default class AccountService {
       })
       return { "success": true,"tracking_id":groupModel._id }
     } catch (error) {
+        groupModel['status'] = "failed"
+        if (!groupModel['errorstage']){
+          groupModel['errorstage'] = STATUS.STATUS.FAILED_AT_STARTED
+        }
+        await this.repository.updateReport(groupModel)
       throw error;
     }
   }
