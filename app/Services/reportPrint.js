@@ -8,8 +8,8 @@ const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
 var clouud = require('cloudinary').v2;
 var dateTime = require('node-datetime');
-import GroupModel from "../Model/reportModel.js";
-import Database from "../Database-interaction/reportRepositroy.js";
+import GroupModel from "../Model/ReportModel.js";
+import Database from "../Database-interaction/ReportRepositroy.js";
 import * as STATUS from "../Constants/StatusEnum.js";
 
 export default class AccountService {
