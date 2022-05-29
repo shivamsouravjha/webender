@@ -1,4 +1,4 @@
-import Database from "../Database-interaction/ReportRepositroy";
+import Database from "../Database-interaction/ReportRepositroy.js";
 import * as STATUS from "../Constants/StatusEnum";
 
 export default class AccountService {

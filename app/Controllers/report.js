@@ -1,9 +1,9 @@
-import ReportService from '../Services/reportPrint';
-import Controller from './controller';
+import ReportService from '../Services/reportPrint.js';
+import Controller from './controller.js';
 const fs = require('fs');
 import ejs from 'ejs';
 const { performance } = require('perf_hooks');
-import * as STATUS from "../Constants/StatusEnum";
+import * as STATUS from "../Constants/StatusEnum.js";
 const { promisify } = require('util')
 const readFileAsync = promisify(fs.readFile)
 

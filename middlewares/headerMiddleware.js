@@ -1,4 +1,4 @@
-import HttpError from '../app/Controllers/Controller';
+import HttpError from '../app/Controllers/Controller.js';
 
 module.exports = (req, res, next) => {
   try {

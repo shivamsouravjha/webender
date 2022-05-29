@@ -1,5 +1,5 @@
 import express from 'express';
-import SourceController from '../app/Controllers/report';
+import SourceController from '../app/Controllers/report.js';
 
 const ReportApiRouter = express.Router();
 

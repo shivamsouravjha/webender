@@ -1,5 +1,5 @@
 import express from 'express';
-import StatusController from '../app/Controllers/status';
+import StatusController from '../app/Controllers/status.js';
 
 const StatusApiRouter = express.Router();
 

@@ -1,5 +1,5 @@
-import ReportStatusService from '../Services/reportStatus';
-import Controller from './controller';
+import ReportStatusService from '../Services/reportStatus.js';
+import Controller from './controller.js';
 
 export default class AccountController extends Controller {
   constructor(response) {
