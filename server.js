@@ -27,10 +27,10 @@ app.use((error, req, res, next) => {
     res.status(error.code || 500)
     res.json({message: error.message || 'An unknown error occurred!', success: error.success||false});
 });
-    
+
 mongoose
     .connect(
-      `mongodb://${process.env.name}:${process.env.password}@cluster0-shard-00-00.dm1xw.mongodb.net:27017,cluster0-shard-00-01.dm1xw.mongodb.net:27017,cluster0-shard-00-02.dm1xw.mongodb.net:27017/${process.env.db}?ssl=true&replicaSet=atlas-x6eag6-shard-0&authSource=admin&retryWrites=true&w=majority`,
+      process.env.URL,
       { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true }
       
     )
