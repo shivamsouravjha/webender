@@ -9,7 +9,7 @@ const unlinkAsync = promisify(fs.unlink)
 import * as cloud from 'cloudinary'
 var clouud = cloud.v2;
 import * as dateTime from 'node-datetime'
-import * as Report from "../Model/reportModel.js";
+import * as Report from "../Model/ReportModel.js";
 import Database from "../Database-interaction/ReportRepositroy.js";
 import * as STATUS from "../Constants/StatusEnum.js";
 
