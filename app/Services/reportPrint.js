@@ -1,15 +1,16 @@
-const pdf = require('html-pdf');
-var fs = require('fs');
+import * as pdf from 'html-pdf';
+import * as fs from 'fs';
 var options = {
   format: "A4",
   orientation: "potrait",
 };
-const { promisify } = require('util')
+import promisify from 'util.promisify';
 const unlinkAsync = promisify(fs.unlink)
-var clouud = require('cloudinary').v2;
-var dateTime = require('node-datetime');
-import * as  GroupModel from "../Model/ReportModel.js";
-import * as Database from "../Database-interaction/ReportRepositroy.js";
+import * as cloud from 'cloudinary'
+var clouud = cloud.v2;
+import * as dateTime from 'node-datetime'
+import * as Report from "../Model/reportModel.js";
+import Database from "../Database-interaction/ReportRepositroy.js";
 import * as STATUS from "../Constants/StatusEnum.js";
 
 export default class AccountService {
@@ -51,7 +52,7 @@ export default class AccountService {
 
 
   async printReport(html, options) {
-    const groupModel = new GroupModel({ startedAt: this.bringTime(), status: STATUS.STATUS.STARTED });
+    const groupModel = new Report({ startedAt: this.bringTime(), status: STATUS.STATUS.STARTED });
     try {
       await this.repository.createReport(groupModel)
       groupModel['creationStartAt'] = this.bringTime()

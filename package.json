@@ -7,8 +7,9 @@
   "scripts": {
     "test": "mocha --recursive --exit",
     "apis": "npx babel-node --presets=@babel/preset-env -- server.js",
-    "start": "nodemon  --exec npm-run-all --parallel apis"
+    "start": "node  server.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shivamsouravjha/webender.git"

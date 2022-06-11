@@ -18,4 +18,4 @@ const reportSchema = new schema({
   });
 
 reportSchema.plugin(mongooseUniqueValidator);
-module.exports = mongoose.model('Report',reportSchema);
+export default mongoose.model('Report',reportSchema);

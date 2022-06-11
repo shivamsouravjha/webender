@@ -1,5 +1,5 @@
-import * as CTRL from '../app/Controllers/Controller.js';
 
+import  * as HttpError from '../app/Controllers/Controller.js';
 module.exports = (req, res, next) => {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*');
