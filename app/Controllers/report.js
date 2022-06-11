@@ -1,5 +1,5 @@
-import ReportService from '../Services/reportPrint.js';
-import Controller from './Controller.js';
+import * as ReportService from '../Services/reportPrint.js';
+import * as Controller from './Controller.js';
 const fs = require('fs');
 import ejs from 'ejs';
 const { performance } = require('perf_hooks');

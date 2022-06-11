@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "report downloading package",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "mocha --recursive --exit",
     "apis": "npx babel-node --presets=@babel/preset-env -- server.js",

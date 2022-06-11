@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import express from 'express';
 import bodyParser from 'body-parser';
 import Routes from './routes/routes.js'
-import HeaderMiddleware from './middlewares/headerMiddleware.js'
+import * as HeaderMiddleware from './middlewares/headerMiddleware.js'
 const app = express();
 require('dotenv').config();
 

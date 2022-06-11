@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+import mongoose from 'mongoose';
+import mongooseUniqueValidator from 'mongoose-unique-validator';
 
 const schema=  mongoose.Schema;
 
@@ -17,5 +17,5 @@ const reportSchema = new schema({
     versionKey: false 
   });
 
-reportSchema.plugin(uniqueValidator);
+reportSchema.plugin(mongooseUniqueValidator);
 module.exports = mongoose.model('Report',reportSchema);

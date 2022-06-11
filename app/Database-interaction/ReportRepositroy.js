@@ -1,4 +1,4 @@
-import ReportModel from "../Model/ReportModel.js";
+import * as ReportModel from "../Model/ReportModel.js";
 import mongoose from 'mongoose';
 
 export default class SourceRepository {

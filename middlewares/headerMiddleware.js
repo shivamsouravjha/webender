@@ -1,4 +1,4 @@
-import HttpError from '../app/Controllers/Controller.js';
+import * as CTRL from '../app/Controllers/Controller.js';
 
 module.exports = (req, res, next) => {
   try {
@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     next();
   } catch (err) {
-    const error = new HttpError('Authentication failed!', 403);
+    const error = new CTRL.HttpError('Authentication failed!', 403);
     return next(error);
   }
 };
